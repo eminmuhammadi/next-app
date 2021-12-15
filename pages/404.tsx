@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
+import ErrorComponent from './_error';
 
 const Home: NextPage = () => {
   return (
-    <h1>Hello World</h1>
+    <ErrorComponent statusCode={404} />
   );
 };
 
