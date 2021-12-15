@@ -1,11 +1,14 @@
 {
-  "name": "@eminmuhammadi/next-docs",
+  "name": "@eminmuhammadi/next-app",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "preexport": "npm run build",
+    "prestart": "npm run export"
   },
   "dependencies": {
     "next": "12.0.7",
