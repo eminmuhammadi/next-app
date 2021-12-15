@@ -1,1 +1,1 @@
-# Next Docs
+# Next App

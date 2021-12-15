@@ -12,8 +12,7 @@ class MyDocument extends Document {
       return (
         <Html>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="generator" content="@eminmuhammadi/next-docs" />
+                <meta name="generator" content="@eminmuhammadi/next-app" />
             </Head>    
             <body>
                 <Main/>
