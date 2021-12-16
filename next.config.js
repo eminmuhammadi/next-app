@@ -8,4 +8,8 @@ module.exports = {
   turboMode: true,
   enableBlurryPlaceholder: true,
   scriptLoader: true,
+  staticPageGenerationTimeout: 90,
+  env: {
+    API_URL: 'https://api.jikan.moe/v3',
+  }
 }
