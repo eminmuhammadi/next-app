@@ -5,7 +5,7 @@ export interface Pictures {
   readonly request_hash: string;
 }
 
-interface Picture {
+export interface Picture {
   readonly large: string;
   readonly small: string;
 }

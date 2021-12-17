@@ -1,7 +1,7 @@
 import { GetServerSideProps , NextPage } from 'next'
 
-import getTopData from "../../data/top"
-import { Top } from "../../data/_interfaces/top/Top"
+import getTopData from "./../../data/top"
+import { Top } from "./../../data/_interfaces/top/Top"
 
 
 interface Props {
@@ -25,13 +25,19 @@ const Index: NextPage<Props> = ({ data }) => {
  * @returns 
  */
 export const getServerSideProps: GetServerSideProps  = async (ctx) => {
-    const { page } = ctx.query;
+    const page:number = Number(ctx.query.page) || 1;
 
-    const res = await getTopData('characters', Number(page || 1));
-
+    const res = await getTopData('manga', page);
+    if (!res || res.length === 0) {
+        return {
+            notFound: true,
+        }
+    }
+    
     return {
         props: {
-            data: res
+            data: res,
+            page
         },
     };
 }

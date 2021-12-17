@@ -10,6 +10,6 @@ module.exports = {
   scriptLoader: true,
   staticPageGenerationTimeout: 90,
   env: {
-    API_URL: 'https://api.jikan.moe/v3',
+    API_URL: process.env.API_URL,
   }
 }
