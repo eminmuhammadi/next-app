@@ -1,0 +1,9 @@
+.main_layout {
+    @apply text-gray-900 text-xl font-sans antialiased tracking-wide leading-loose;
+    @apply selection:bg-gray-200 selection:text-gray-900;
+    @apply bg-gray-50 min-h-fit;
+}
+
+.main {
+    @apply relative min-h-screen;
+}

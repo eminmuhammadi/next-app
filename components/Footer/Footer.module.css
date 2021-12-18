@@ -1,0 +1,3 @@
+.footer {
+    @apply container mx-auto w-full items-center content-center;
+}

@@ -1,8 +1,8 @@
-import { GetServerSideProps , NextPage } from 'next'
-import { ParsedUrlQuery } from 'querystring'
+import { GetServerSideProps, NextPage } from 'next'
+import { ParsedUrlQuery } from 'querystring';
 
-import { getAnimeByID } from "../../data/anime"
-import { AnimeById } from "./../../data/_interfaces/anime/ById"
+import { getAnimeByID } from "../../_data/anime"
+import { AnimeById } from "../../_data/_interfaces/anime/ById"
 
 interface Props {
     data: AnimeById,
@@ -18,7 +18,7 @@ interface IParams extends ParsedUrlQuery {
  * @param param0 
  * @returns 
  */
-const Index: NextPage<Props> = ({ data, id }) => {
+const Index: NextPage<Props> = (props) => {
     return (
         <></>
     )
@@ -29,10 +29,17 @@ const Index: NextPage<Props> = ({ data, id }) => {
  * @param ctx 
  * @returns 
  */
-export const getServerSideProps: GetServerSideProps  = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    if (process.env.NODE_ENV !== 'development') {
+        ctx.res.setHeader(
+            'Cache-Control',
+            'public, s-maxage=10, stale-while-revalidate=59'
+        );
+    }
+
     const { id } = ctx.params as IParams;
 
-    const res:AnimeById = await getAnimeByID(Number(id));
+    const res: AnimeById = await getAnimeByID(Number(id));
     if (!res || res.mal_id === undefined || res.mal_id === null) {
         return {
             notFound: true,

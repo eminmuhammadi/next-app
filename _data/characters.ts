@@ -2,7 +2,7 @@ import ow from 'ow';
 
 import { Pictures } from './_interfaces/character/Pictures';
 
-import fetcher from '../helpers/fetcher';
+import fetcher from '../_helpers/fetcher';
 
 /**
  * 

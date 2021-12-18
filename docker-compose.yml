@@ -9,14 +9,18 @@ services:
         ports:
             - "3000:3000"
         env_file:
-          - ./.env
-            
-    nginx:
-        image: nginx:alpine
-        restart: always
+            - ./.env
+        environment:
+            - NODE_ENV=production
+            - HOSTNAME=next_app
+
+    proxy:
+        container_name: proxy
+        build: .
+        image: decentralize/caching-proxy
         ports:
-            - "80:80"
-        volumes:
-            - ./nginx.conf:/etc/nginx/conf.d/default.conf
-        links:
-        - next_app
+            - "8088:80"
+        environment:
+            - UPSTREAM=http://next_app:3000
+            - MAX_SIZE=500m
+            - HOSTNAME=proxy

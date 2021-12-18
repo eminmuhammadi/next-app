@@ -9,7 +9,7 @@ export interface Season {
   readonly season_year: number;
 }
 
-interface Anime {
+export interface Anime {
   readonly airing_start: Date | null;
   readonly continuing: boolean;
   readonly episodes: number | null;

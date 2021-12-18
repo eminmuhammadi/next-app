@@ -9,7 +9,11 @@ module.exports = {
   enableBlurryPlaceholder: true,
   scriptLoader: true,
   staticPageGenerationTimeout: 90,
+  cssModules: true,
+  cssLoaderOptions: {
+    localIdentName: '[hash:base64:5]',
+  },
   env: {
     API_URL: process.env.API_URL,
-  }
+  },
 }

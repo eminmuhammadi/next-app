@@ -1,0 +1,57 @@
+.navbar {
+    @apply bg-white/60 text-gray-800 py-3 sticky top-0 z-50;
+    @apply transition-colors duration-500;
+    @apply border-b border-gray-100;
+}
+
+.menu {
+    @apply container mx-auto w-full items-center content-center;
+}
+
+.brand {
+    @apply cursor-pointer;
+}
+
+.menu_inner {
+    @apply flex items-center justify-between;
+}
+
+.menu_actions {
+    @apply flex items-center;
+}
+
+/* Menu items */
+.menu_items {
+    @apply px-4 py-2 rounded text-sm;
+}
+
+.menu_items:hover {
+    @apply text-gray-400 font-light bg-gray-50;
+}
+
+.menu_items_active {
+    @apply text-gray-900 underline decoration-gray-500 decoration-wavy decoration-2 font-semibold underline-offset-4;
+}
+
+/* Menubar for smaller devices*/
+.menubar_sm {
+    @apply mt-3 min-h-screen bg-gray-200 absolute z-40 w-full;
+}
+
+.menubar_sm_items {
+    @apply container mx-auto pt-10;
+}
+
+/* Search action */
+.search_action {
+    @apply inline-flex pt-1 items-center content-center rounded hover:bg-gray-50;
+    @apply px-0 py-0 md:px-2 md:py-2;
+}
+
+.search_action:hover {
+    @apply text-gray-400 font-light;
+}
+
+.search_action_text {
+    @apply text-xs hidden md:inline;
+}

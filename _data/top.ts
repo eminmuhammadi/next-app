@@ -1,6 +1,6 @@
 import ow from 'ow';
 
-import fetcher from './../helpers/fetcher';
+import fetcher from '../_helpers/fetcher';
 import { Result, SubTypes, Types, Top } from './_interfaces/top/Top';
 
 /**

@@ -38,7 +38,7 @@ export type SearchTypes =
 
 type Status = 'airing' | 'completed' | 'complete' | 'tba' | 'upcoming';
 
-interface Result {
+export interface Result {
   readonly airing: boolean;
   readonly end_date: Date | null;
   readonly episodes: number;

@@ -1,16 +1,17 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 
-import { getMangaByID } from "../../_data/manga"
-import { MangaById } from "../../_data/_interfaces/manga/ById"
+import { Seasons, Anime } from '../../../_data/_interfaces/season/Season';
+import { getAnimeByYearAndSeason } from '../../../_data/season';
 
 interface Props {
-    data: MangaById,
+    data: Anime[],
     id: number,
 }
 
 interface IParams extends ParsedUrlQuery {
-    id: string
+    year: string
+    season: string
 }
 
 /**
@@ -37,10 +38,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         );
     }
 
-    const { id } = ctx.params as IParams;
+    const { year, season } = ctx.params as IParams;
+    if (!year || 
+        !season || 
+        !['winter', 'spring', 'summer', 'fall'].includes(season) || 
+        !/^\d{4}$/.test(year) || 
+        Number(year) < 1900 || 
+        Number(year) > 2100) {
+        return {
+            notFound: true,
+        }
+    }
 
-    const res: MangaById = await getMangaByID(Number(id));
-    if (!res || res.mal_id === undefined || res.mal_id === null) {
+    const res = await getAnimeByYearAndSeason(Number(year), season as Seasons);
+    if(!res.anime || res.anime.length === 0) {
         return {
             notFound: true,
         }
@@ -48,8 +59,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     return {
         props: {
-            data: res,
-            id: Number(id),
+            data: res.anime,
+            year,
+            season
         },
     };
 }
