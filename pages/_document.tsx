@@ -22,7 +22,7 @@ class MyDocument extends Document {
                   rel="stylesheet"
                 />
             </Head>    
-            <body aria-label='Document'
+            <body aria-label="Document"
                   role="document">
                 <Main/>
                 <NextScript />

@@ -1,0 +1,23 @@
+.frame {
+    @apply flex rounded-full bg-gray-50 px-4 pb-2 hover:shadow-lg;
+}
+
+.avatar {
+    @apply rounded-full float-left h-full bg-gray-200;
+}
+
+.link {
+    @apply block md:inline-block mr-1 ml-1 my-2;
+}
+
+.character {
+    @apply font-semibold truncate px-3 pt-2 text-sm text-center items-center content-center h-full;
+}
+
+.role {
+    @apply block font-normal text-left text-xs text-slate-400;
+}
+
+.name {
+    @apply block text-left;
+}

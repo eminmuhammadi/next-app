@@ -19,7 +19,7 @@ const getTopData =  async (type: Types = 'anime', page: number = 1, subType?: Su
         return result.top as Top[];
     }
 
-    const { top } = await fetcher.get<Result>(`top/${type}/${page}`);
+    const { top } = await fetcher.get<Result>(`top/${type}/${page}/bypopularity`);
 
     return top as Top[];
 }

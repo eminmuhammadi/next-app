@@ -6,7 +6,7 @@ export interface Videos {
   readonly request_hash: string;
 }
 
-interface Episode {
+export interface Episode {
   readonly episode: string;
   readonly image_url: string;
   readonly title: string;

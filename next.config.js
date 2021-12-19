@@ -15,5 +15,12 @@ module.exports = {
   },
   env: {
     API_URL: process.env.API_URL,
+    BASE_URL: process.env.BASE_URL,
+    CDN_URL: process.env.CDN_URL,
+  },
+  images: {
+    domains: [
+      'ik.imagekit.io'
+    ],
   },
 }

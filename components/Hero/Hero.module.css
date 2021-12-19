@@ -1,0 +1,27 @@
+.hero {
+    @apply container mx-auto py-5;
+}
+
+.background {
+    @apply flex h-96 bg-cover bg-no-repeat bg-center bg-blend-overlay rounded-lg
+}
+
+.inner {
+    @apply container md:px-10 md:py-10 border border-gray-600 backdrop-blur-md grid grid-cols-12 bg-black/75 rounded-lg bg-blend-overlay;
+}
+
+.title {
+    @apply text-2xl truncate pt-5 text-gray-100 leading-loose font-bold tracking-wide;
+}
+
+.description {
+    @apply scrollbar scrollbar-thumb-transparent scrollbar-track-transparent align-middle whitespace-normal h-64 md:h-48 text-xs pt-5 text-left leading-relaxed tracking-wide text-slate-300 normal-case text-ellipsis overflow-y-scroll;
+}
+
+.poster_frame {
+    @apply float-right h-48 rounded-lg shadow-sm;
+}
+
+.poster {
+    @apply rounded-lg h-48 shadow-sm bg-gray-50;
+}

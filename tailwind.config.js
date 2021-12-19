@@ -9,6 +9,7 @@ module.exports = {
     './pages/_app.tsx',
     './pages/_document.tsx',
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -22,5 +23,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }

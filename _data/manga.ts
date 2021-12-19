@@ -39,20 +39,6 @@ const getCharacters = async (id: number) => {
 /**
  * 
  * @param id 
- * @param page 
- * @returns 
- */
-const getEpisodes = async (id: number, page: number = 1) => {
-    ow(id, ow.number.positive);
-    ow(page, ow.number.positive);
-
-    const result = await fetcher.get<Episodes>(`/manga/${id}/episodes/${page}`);
-    return result as Episodes;
-};
-
-/**
- * 
- * @param id 
  * @returns 
  */
 const getMoreInfo = async (id: number) => {

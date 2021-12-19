@@ -12,7 +12,7 @@ const MainLayout = (props: Props) => {
         <div>
             <Navbar />
 
-            <main className={`${style.main_layout}`} 
+            <main className={`${style.main_layout} dark:bg-black dark:text-gray-50`} 
                   aria-label="Main content"
                   role="main">
                 <div className={`${style.main}`}

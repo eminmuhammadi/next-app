@@ -5,7 +5,7 @@ export interface Characters {
   readonly request_hash: string;
 }
 
-interface Character {
+export interface Character {
   readonly image_url: string;
   readonly mal_id: number;
   readonly name: string;

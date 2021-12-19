@@ -5,7 +5,7 @@ export interface News {
   readonly request_hash: string;
 }
 
-interface Article {
+export interface Article {
   readonly author_name: string;
   readonly author_url: string;
   readonly comments: number;

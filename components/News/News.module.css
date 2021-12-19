@@ -1,0 +1,15 @@
+.image {
+    @apply hidden md:block bg-gray-200 md:flex-shrink-0 h-32 w-full bg-cover bg-no-repeat bg-center w-full object-cover md:w-32;
+}
+
+.item {
+    @apply hover:shadow-lg rounded-lg border col-span-12 md:col-span-6 text-sm w-full mt-2 mb-2 bg-white overflow-hidden;
+}
+
+.title {
+    @apply w-full truncate block mt-1 text-sm leading-tight font-medium text-black hover:underline;
+}
+
+.intro {
+    @apply mt-2 h-10 md:h-16 py-2 text-xs text-slate-400 scrollbar scrollbar-thumb-transparent scrollbar-track-transparent text-ellipsis overflow-y-scroll;
+}
