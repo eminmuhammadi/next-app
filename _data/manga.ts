@@ -111,7 +111,6 @@ const getVideos = async (id: number) => {
 export {
     getMangaByID,
     getCharacters,
-    getEpisodes,
     getMoreInfo,
     getNews,
     getStats,
