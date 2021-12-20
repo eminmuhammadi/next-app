@@ -8,7 +8,7 @@ const Search = (): JSX.Element => {
             <h3 className="container mx-auto text-base md:text-3xl pt-10 pb-2">
                  Search
                  <select name="type" 
-                         className="mx-2 px-1 py-1 bg-gray-50 rounded-lg">
+                         className={`dark:bg-gray-900 ${style.select}`}>
                     <option value="manga">Anime</option>
                     <option value="manga">Manga</option>
                     <option value="character">Character</option>
@@ -20,7 +20,7 @@ const Search = (): JSX.Element => {
                        name="q"
                        autoComplete="off"
                        placeholder="Naruto..."
-                       className="rounded-lg w-full shadow-sm h-6 md:h-12 px-3 py-2 placeholder-gray-500 appearance-none border border-gray-300"/>
+                       className={`dark:bg-gray-900 dark:border-gray-700 ${style.input}`}/>
                 </div>
                 <div className="col-span-1 md:col-span-12"></div>
             </div>
