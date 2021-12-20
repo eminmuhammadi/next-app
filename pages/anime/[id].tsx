@@ -1,25 +1,19 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
-import { getIdFromYoutubeURL } from './../../_helpers/url';
 
 import { Hero } from '../../components/Hero';
 
 import { AnimeById } from "../../_data/_interfaces/anime/ById"
 import { Article, News } from '../../_data/_interfaces/anime/News';
-import { Character, CharactersStaff } from '../../_data/_interfaces/anime/CharactersStaff';
-import { Videos, Episode } from '../../_data/_interfaces/anime/Videos';
 
 import { AnimeDetails } from '../../components/Anime';
 import { News as NewsComponent } from '../../components/News';
 
-import { getAnimeByID, getCharacters, getNews, getVideos } from "../../_data/anime"
+import { getAnimeByID, getNews } from "../../_data/anime"
 
 interface Props {
     data: AnimeById,
     articles: Article[],
-    characters: Character[],
-    episodes: Episode[],
-    ytID: string,
     id: number,
 }
 
@@ -43,9 +37,7 @@ const Index: NextPage<Props> = (props) => {
                   image={props.data.image_url}/>
 
             <div>
-                <AnimeDetails characters={props.characters}
-                              episodes={props.episodes}
-                              ytID={props.ytID}/>
+                <AnimeDetails data={props.data}/>
                 <div className="bg-gray-100 dark:bg-gray-900">
                     <NewsComponent data={props.articles}/>
                 </div>
@@ -77,16 +69,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
 
     const news:News = await getNews(res.mal_id);
-    const characterStaff:CharactersStaff = await getCharacters(res.mal_id);
-    const videos:Videos = await getVideos(res.mal_id);
 
     return {
         props: {
             data: res,
             articles: news.articles,
-            characters: characterStaff.characters,
-            episodes: videos.episodes,
-            ytID: getIdFromYoutubeURL(videos.promo[0].video_url),
             id: Number(id),
         },
     };

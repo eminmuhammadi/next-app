@@ -55,7 +55,7 @@ interface From {
   readonly year: number;
 }
 
-interface Genre {
+export interface Genre {
   readonly mal_id: number;
   readonly name: string;
   readonly type: Type;

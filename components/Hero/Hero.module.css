@@ -7,7 +7,7 @@
 }
 
 .inner {
-    @apply container md:px-10 md:py-10 border border-gray-600 backdrop-blur-md grid grid-cols-12 bg-black/75 rounded-lg bg-blend-overlay;
+    @apply container md:px-10 md:py-10 border border-gray-600 backdrop-blur-md grid grid-cols-12 bg-gray-900/75 rounded-lg bg-blend-overlay;
 }
 
 .title {

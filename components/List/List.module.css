@@ -1,0 +1,11 @@
+.item {
+    @apply hover:bg-gray-50 hover:border py-3 px-2 rounded-lg text-xs col-span-6 sm:col-span-4 md:col-span-2;
+}
+
+.title {
+    @apply px-2 text-slate-600 text-center font-normal py-1 sm:text-left truncate;
+}
+
+.image {
+    @apply mx-auto bg-gray-50 rounded-lg;
+}

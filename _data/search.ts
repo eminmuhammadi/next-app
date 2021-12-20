@@ -17,8 +17,8 @@ const getSearchResults = async (query: string, type: SearchTypes, page: number =
     ow(page, ow.number.positive);
     ow(query, ow.string.minLength(3));
   
-    const url = new URL(`/search/${type}?q=${query}&page=${page}`, process.env.API_URL);
-  
+    const url = new URL(`/v3/search/${type}?q=${query}&page=${page}`, process.env.API_URL);
+
     if (filters) {
       if (filters.end_date) {
         // eslint-disable-next-line no-param-reassign

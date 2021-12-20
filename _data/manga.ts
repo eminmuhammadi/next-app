@@ -2,13 +2,11 @@ import ow from 'ow';
 
 import { MangaById } from './_interfaces/manga/ById';
 import { Characters } from './_interfaces/manga/Characters';
-import { Episodes } from './_interfaces/anime/Episodes';
 import { MoreInfo } from './_interfaces/anime/MoreInfo';
 import { News } from './_interfaces/anime/News';
 import { Pictures } from './_interfaces/anime/Pictures';
 import { Recommendations } from './_interfaces/anime/Recommendations';
 import { Stats } from './_interfaces/anime/Stats';
-import { Videos } from './_interfaces/anime/Videos';
 
 import fetcher from '../_helpers/fetcher';
 
@@ -96,18 +94,6 @@ const getRecommendations = async (id: number) => {
     return result as Recommendations;
 }
 
-/**
- * 
- * @param id 
- * @returns 
- */
-const getVideos = async (id: number) => {
-    ow(id, ow.number.positive);
-
-    const result = await fetcher.get<Videos>(`/manga/${id}/videos`);
-    return result as Videos;
-}
-
 export {
     getMangaByID,
     getCharacters,
@@ -116,5 +102,4 @@ export {
     getStats,
     getPictures,
     getRecommendations,
-    getVideos,
 }

@@ -10,7 +10,7 @@ class MyDocument extends Document {
   render()
   {
       return (
-        <Html>
+        <Html className="scroll-smooth">
             <Head>
                 <meta name="generator" content="@eminmuhammadi/next-app" />
 

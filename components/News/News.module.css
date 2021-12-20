@@ -7,7 +7,11 @@
 }
 
 .title {
-    @apply w-full truncate block mt-1 text-sm leading-tight font-medium text-black hover:underline;
+    @apply w-full font-semibold truncate block mt-1 text-sm leading-tight text-black hover:underline;
+}
+
+.title:hover {
+    @apply decoration-1 decoration-dashed;
 }
 
 .intro {

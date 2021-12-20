@@ -13,7 +13,7 @@ export interface Episode {
   readonly url: string;
 }
 
-interface Promo {
+export interface Promo {
   readonly image_url: string;
   readonly title: string;
   readonly video_url: string;

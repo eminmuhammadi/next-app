@@ -1,0 +1,19 @@
+.detail_title {
+    @apply col-span-12 md:col-span-3 align-middle text-sm p-0;
+}
+
+.detail_data {
+    @apply truncate col-span-12 md:col-span-9 align-middle text-xs text-slate-500 p-0;
+}
+
+.detail {
+    @apply grid grid-cols-12 gap-1 py-2 hover:bg-gray-100 px-2 rounded-lg;
+}
+
+.details_frame {
+    @apply my-4 py-4 bg-gray-50 px-4 rounded-lg sticky top-16;
+}
+
+.synopsis {
+    @apply text-left leading-loose text-sm text-slate-500 pt-2;
+}

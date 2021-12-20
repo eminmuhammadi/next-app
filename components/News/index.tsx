@@ -21,10 +21,7 @@ const News = (props: NewsProps): JSX.Element => {
             {
                 props.data.map((article: Article, index: number) => {
                     return (
-                        <a key={index} 
-                            href={`${article.url}`}
-                            target='_blank' 
-                            rel='noopener noreferrer'
+                        <div key={index} 
                             className={`dark:bg-black dark:border-gray-800 ${style.item}`}>
                             <div className="md:flex">
                                 <div style={{ 
@@ -43,7 +40,7 @@ const News = (props: NewsProps): JSX.Element => {
                                     </p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     );
                 })
             }

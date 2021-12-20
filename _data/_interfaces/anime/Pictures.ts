@@ -5,7 +5,8 @@ export interface Pictures {
   readonly request_hash: string;
 }
 
-interface Picture {
-  readonly large: string;
-  readonly small: string;
+export interface Picture {
+  readonly large?: string;
+  readonly image_url?: string;
+  readonly small?: string;
 }

@@ -52,6 +52,7 @@ export interface Result {
   readonly title: string;
   readonly type: Type;
   readonly url: string;
+  readonly name: string | null;
 }
 
 enum Type {

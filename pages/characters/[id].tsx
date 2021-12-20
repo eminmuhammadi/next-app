@@ -1,11 +1,13 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
+import { Hero } from '../../components/Hero';
 
-import { getCharacterPictures } from "../../_data/characters";
-import { Pictures, Picture } from "../../_data/_interfaces/character/Pictures";
+import { getCharacterById } from "../../_data/characters";
+import { Character } from "../../_data/_interfaces/character/ById";
+import { CharacterDetails } from "../../components/Character";
 
 interface Props {
-    data: Picture[],
+    data: Character,
     id: number,
 }
 
@@ -20,7 +22,18 @@ interface IParams extends ParsedUrlQuery {
  */
 const Index: NextPage<Props> = (props) => {
     return (
-        <></>
+        <div>
+            <Hero title={props.data.name || props.data.name_kanji} 
+                  description={
+                    (props.data.about).replace("[Written by MAL Rewrite]", "")
+                                         .replace(/(\(Source:.*?\))/gi, "")
+                  }                   
+                  image={props.data.image_url}/>
+
+            <div>
+                <CharacterDetails data={props.data}/>
+            </div>
+        </div>
     )
 }
 
@@ -39,16 +52,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const { id } = ctx.params as IParams;
 
-    const res: Pictures = await getCharacterPictures(Number(id));
-    if (!res || res.pictures.length === 0) {
+    const res: Character = await getCharacterById(Number(id));
+    if (!res) {
         return {
             notFound: true,
         }
     }
 
+    // const news:News = await getNews(res.mal_id);
+
     return {
         props: {
-            data: res.pictures,
+            data: res,
             id: Number(id),
         },
     };

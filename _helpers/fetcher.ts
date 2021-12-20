@@ -6,7 +6,6 @@ const axiosInstance = axios.create({
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'User-Agent': '@eminmuhammadi/next-app'
     },
     responseType: 'json'
 });

@@ -8,12 +8,10 @@ import { Article, News } from '../../_data/_interfaces/anime/News';
 import { News as NewsComponent } from '../../components/News';
 import { Hero } from '../../components/Hero';
 import { MangaDetails } from '../../components/Manga';
-import { Characters, Character } from './../../_data/_interfaces/manga/Characters';
 
 interface Props {
     data: MangaById,
     articles: Article[],
-    characters: Character[],
     id: number,
 }
 
@@ -36,7 +34,7 @@ const Index: NextPage<Props> = (props) => {
                     } 
                   image={props.data.image_url}/>        
             <div>
-                <MangaDetails characters={props.characters}/>
+                <MangaDetails data={props.data}/>
                 <div className="bg-gray-100 dark:bg-gray-900">
                     <NewsComponent data={props.articles}/>
                 </div>
@@ -68,13 +66,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
 
     const news:News = await getNews(res.mal_id);
-    const characterStaff:Characters = await getCharacters(res.mal_id);
 
     return {
         props: {
             data: res,
             articles: news.articles,
-            characters: characterStaff.characters,
             id: Number(id),
         },
     };

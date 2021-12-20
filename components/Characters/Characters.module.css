@@ -1,5 +1,5 @@
 .frame {
-    @apply flex rounded-full bg-gray-50 px-4 pb-2 hover:shadow-lg;
+    @apply flex rounded-full bg-gray-50 px-4 pb-2 hover:shadow-lg border border-gray-200;
 }
 
 .avatar {
