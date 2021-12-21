@@ -86,7 +86,7 @@ interface EpisodeCsrProps {
 
 const EpisodesCSR = (props: EpisodeCsrProps): JSX.Element => {
     const fetch = (url: string) => fetcher.get<Videos>(url);
-    const { data } = useSWR(`/anime/${props.id}/videos`, fetch);
+    const { data } = useSWR(`${process.env.API_URL}/anime/${props.id}/videos`, fetch);
 
     if (!data) {
         return(

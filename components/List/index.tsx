@@ -70,7 +70,7 @@ interface ArchiveListProps {
 
 const ArchiveList = (props: ArchiveListProps): JSX.Element => {
     const fetch = (url: string) => fetcher.get<Season>(url);
-    const { data } = useSWR(`/season/${props.year}/${props.season}`, fetch);
+    const { data } = useSWR(`${process.env.API_URL}/season/${props.year}/${props.season}`, fetch);
 
     if (!data) {
         return(

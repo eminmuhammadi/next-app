@@ -13,7 +13,7 @@ interface GalleryProps {
 
 const GalleryCSR = (props: GalleryProps): JSX.Element => {
     const fetch = (url: string) => fetcher.get<Pictures>(url);
-    const { data } = useSWR(`/${props.type}/${props.id}/pictures`, fetch);
+    const { data } = useSWR(`${process.env.API_URL}/${props.type}/${props.id}/pictures`, fetch);
 
     if (!data) {
         return(
