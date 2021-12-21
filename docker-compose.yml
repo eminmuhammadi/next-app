@@ -5,7 +5,9 @@ services:
         container_name: next_app
         build: .
         volumes:
-            - .:/app
+            - ./:/usr/src/app
+            - /usr/src/app/node_modules
+            - /usr/src/app/.next
         ports:
             - "3000:3000"
         env_file:
