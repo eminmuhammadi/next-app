@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
+import { NextSeo } from 'next-seo';
 
 import { getMangaByID, getNews, getCharacters } from "../../_data/manga"
 import { MangaById } from "../../_data/_interfaces/manga/ById"
@@ -27,6 +28,10 @@ interface IParams extends ParsedUrlQuery {
 const Index: NextPage<Props> = (props) => {
     return (
         <div>
+            <NextSeo
+                title={`${props.data.title_english || props.data.title || props.data.title_japanese}`}
+                description={`${props.data.synopsis}`}
+            />
             <Hero title={props.data.title_english || props.data.title || props.data.title_japanese} 
                   description={
                       (props.data.synopsis).replace("[Written by MAL Rewrite]", "")

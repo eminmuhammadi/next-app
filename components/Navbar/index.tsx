@@ -1,11 +1,14 @@
+import { useTheme } from 'next-themes';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { MenuItems } from './MenuItems';
 import style from './Navbar.module.css';
 
 const Navbar = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
+    const { theme, setTheme } = useTheme();
 
     const toggleMenu = (): void => {
         setIsOpen(!isOpen);
@@ -38,9 +41,9 @@ const Navbar = (): JSX.Element => {
 
                     {/* Brand */}
                     <Link href="/">
-                        <a className={`${style.brand}`}
-                            aria-label="Brand">
-                            Brand
+                        <a className={`${style.brand} bg-gray-50 dark:bg-gray-900 dark:text-slate-200 text-slate-900 px-2 py-1 rounded-lg`}
+                            aria-label={`${process.env.APP_NAME}`}>
+                            Penthagon
                         </a>
                     </Link>
 
@@ -66,6 +69,30 @@ const Navbar = (): JSX.Element => {
                                 </span>
                             </a>
                         </Link>
+                        {/* Theme Toggle */}
+                        <button className={`hidden md:block float-right dark:hover:bg-gray-900/60 dark:hover:text-gray-200`}
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            aria-label="Toggle theme">
+                            <span className={`${style.theme_toggle_text}`}>
+                                {theme === 'dark' ? (
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         width={16} 
+                                         height={16}
+                                         className="h-4 ml-0 md:ml-2 text-gray-800 fill-gray-800 dark:fill-gray-50"
+                                         viewBox="0 0 24 24">
+                                             <path d="M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm2.312-4.897c0 2.206 1.794 4 4 4s4-1.794 4-4-1.794-4-4-4-4 1.794-4 4zm10 0c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6z" />
+                                    </svg>
+                                ) : (
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         width={16} 
+                                         height={16}
+                                         className="h-4 ml-0 md:ml-2 text-gray-800 fill-gray-800 dark:fill-gray-50"
+                                         viewBox="0 0 24 24">
+                                             <path d="M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm6.312-10.897c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z" />
+                                    </svg>
+                                )}
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>

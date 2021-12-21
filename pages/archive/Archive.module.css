@@ -1,0 +1,15 @@
+.season_item {
+    @apply underline hover:text-black decoration-1 decoration-dashed underline-offset-2 mb-2;
+}
+
+.year {
+    @apply slashed-zero oldstyle-nums text-black col-span-5 md:col-span-4 text-2xl text-left md:text-center;
+}
+
+.season {
+    @apply text-slate-400 col-span-5 md:col-span-4 text-base text-right md:text-center;
+}
+
+.data {
+    @apply my-10 leading-loose col-span-12 grid grid-cols-12;
+}

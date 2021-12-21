@@ -1,5 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+
 import { List } from '../../components/List'
 
 import getTopData from "../../_data/top"
@@ -18,12 +20,19 @@ interface Props {
 const Index: NextPage<Props> = (props) => {
     return (
         <div className="container mx-auto">
+            <NextSeo
+                title={`Characters`}
+                description={`In fiction, a character is a person or other being in a narrative. The character may be entirely fictional or based on a real-life person, in which case the distinction of a "fictional" versus "real" character may be made. Listing characters page ${props.page}`}
+            />
+
             <h3 className="container mx-auto text-3xl pt-10 pb-2">
                 Characters
             </h3>
+
             <List data={props.data} 
                   type="characters"
                   page={props.page}/>
+
             <div className="grid justify-items-center text-base pb-8">
                 <div className="flex">
                     {

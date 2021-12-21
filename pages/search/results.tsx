@@ -1,5 +1,6 @@
-import { GetServerSideProps , NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo';
 
 import { SearchList } from '../../components/List'
 
@@ -21,41 +22,54 @@ interface Props {
  */
 const Index: NextPage<Props> = (props) => {
     return (
-      <div className="container mx-auto">
-        <h3 className="container mx-auto text-3xl pt-10 pb-2">
-            Results
-        </h3>
-        <SearchList data={props.data} 
-                    type="manga"
-                    page={props.page}/>
-        <div className="grid justify-items-center text-base pb-8">
-            <div className="flex">
-                {/* Previous */}
-                {
-                    props.page > 1 && (
-                        <Link href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page - 1}`}>
-                            <a className="dark:text-slate-300 dark:hover:bg-gray-800 px-5 py-2 rounded-lg mx-4 hover:bg-gray-50"
-                                href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page - 1}`}>
-                                Previous
-                            </a>
-                        </Link>
-                    )
-                }
+        <div className="container mx-auto">
+            <NextSeo
+                title={`Results`}
+                noindex={true}
+                nofollow={true}
+                description={`Listing ${props.data.length} ${props.type} results for ${props.q}, page ${props.page} of ${props.last_page}`}
+            />
+            
+            <h3 className="container mx-auto text-3xl pt-10 pb-2">
+                Results
+            </h3>
 
-                {/* Next */}
-                {
-                  props.last_page > props.page && (
-                    <Link href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page + 1}`}>
-                      <a className="dark:border-gray-800 dark:text-slate-300 dark:hover:bg-gray-800 font-semibold shadow-sm border px-10 py-2 rounded-lg mx-4 hover:bg-gray-50"
-                          href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page + 1}`}>
-                          Next
-                      </a>
-                  </Link>
-                  )
-                }
+            <p className="dark:text-slate-400 container mx-auto py-3 text-xs">
+                Listing {props.data.length} {props.type} results for &quot;<span className="font-semibold">{props.q}&quot;</span>, page {props.page} of {props.last_page}
+            </p>
+
+            <SearchList data={props.data}
+                type={props.type}
+                page={props.page} />
+
+            <div className="grid justify-items-center text-base pb-8">
+                <div className="flex">
+                    {/* Previous */}
+                    {
+                        props.page > 1 && (
+                            <Link href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page - 1}`}>
+                                <a className="dark:text-slate-300 dark:hover:bg-gray-800 px-5 py-2 rounded-lg mx-4 hover:bg-gray-50"
+                                    href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page - 1}`}>
+                                    Previous
+                                </a>
+                            </Link>
+                        )
+                    }
+
+                    {/* Next */}
+                    {
+                        props.last_page > props.page && (
+                            <Link href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page + 1}`}>
+                                <a className="dark:border-gray-800 dark:text-slate-300 dark:hover:bg-gray-800 font-semibold shadow-sm border px-10 py-2 rounded-lg mx-4 hover:bg-gray-50"
+                                    href={`/search/results?q=${props.q}&type=${props.type}&page=${props.page + 1}`}>
+                                    Next
+                                </a>
+                            </Link>
+                        )
+                    }
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 
@@ -64,7 +78,7 @@ const Index: NextPage<Props> = (props) => {
  * @param ctx 
  * @returns 
  */
-export const getServerSideProps: GetServerSideProps  = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
     if (process.env.NODE_ENV !== 'development') {
         ctx.res.setHeader(
             'Cache-Control',
@@ -72,9 +86,9 @@ export const getServerSideProps: GetServerSideProps  = async (ctx) => {
         );
     }
 
-    const page:number = Number(ctx.query.page) || 1;
-    const q:string = (ctx.query.q)?.toString() || '';
-    const type:SearchTypes = (ctx.query.type)?.toString() as SearchTypes || 'anime';
+    const page: number = Number(ctx.query.page) || 1;
+    const q: string = (ctx.query.q)?.toString() || '';
+    const type: SearchTypes = (ctx.query.type)?.toString() as SearchTypes || 'anime';
 
 
     if (!q || page < 1 || q.length < 3 || type.length < 5) {
@@ -83,7 +97,7 @@ export const getServerSideProps: GetServerSideProps  = async (ctx) => {
         }
     }
 
-    const res:Search = await getSearchResults(q, type, page);
+    const res: Search = await getSearchResults(q, type, page);
 
     return {
         props: {

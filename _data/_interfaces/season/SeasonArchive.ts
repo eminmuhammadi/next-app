@@ -5,12 +5,12 @@ export interface SeasonArchive {
   readonly request_hash: string;
 }
 
-interface Archive {
+export interface Archive {
   readonly year: number;
   readonly seasons: Season[];
 }
 
-enum Season {
+export enum Season {
   Fall = 'Fall',
   Spring = 'Spring',
   Summer = 'Summer',

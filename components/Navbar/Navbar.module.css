@@ -9,7 +9,7 @@
 }
 
 .brand {
-    @apply cursor-pointer;
+    @apply cursor-pointer align-bottom;
 }
 
 .menu_inner {

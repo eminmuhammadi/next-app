@@ -64,7 +64,13 @@ const CharactersStaffCSR = (props: CharactersCsrProps): JSX.Element => {
     const { data } = useSWR(`/anime/${props.id}/characters_staff`, fetch);
     
     if (!data) {
-        return <></>
+        return(
+            <div>
+                <p className="text-center pt-5">
+                    Loading...
+                </p>
+            </div>
+        )
     }
 
     return <Characters data={data.characters} />

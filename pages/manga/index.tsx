@@ -1,10 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+
 import { List } from '../../components/List'
 
 import getTopData from "../../_data/top"
 import { Top } from "../../_data/_interfaces/top/Top"
-
 
 interface Props {
     data: Top[],
@@ -19,12 +20,19 @@ interface Props {
 const Index: NextPage<Props> = (props) => {
     return (
         <div className="container mx-auto">
+            <NextSeo
+                title={`Manga`}
+                description={`Manga are comics or graphic novels originating from Japan. Most manga conform to a style developed in Japan in the late 19th century, and the form has a long prehistory in earlier Japanese art. The term manga is used in Japan to refer to both comics and cartooning. Listing manga page ${props.page}`}
+            />
+
             <h3 className="container mx-auto text-3xl pt-10 pb-2">
                 Manga
             </h3>
+
             <List data={props.data} 
                   type="manga"
                   page={props.page}/>
+
             <div className="grid justify-items-center text-base pb-8">
                 <div className="flex">
                     {

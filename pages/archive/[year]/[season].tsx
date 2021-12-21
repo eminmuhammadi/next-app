@@ -1,12 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
+import { NextSeo } from 'next-seo';
 
-import { Seasons, Anime } from '../../../_data/_interfaces/season/Season';
-import { getAnimeByYearAndSeason } from '../../../_data/season';
-
+import { Season } from "../../../_data/_interfaces/season/SeasonArchive";
+import { ArchiveList } from '../../../components/List';
 interface Props {
-    data: Anime[],
-    id: number,
+    year: number,
+    season: Season,
 }
 
 interface IParams extends ParsedUrlQuery {
@@ -21,7 +21,20 @@ interface IParams extends ParsedUrlQuery {
  */
 const Index: NextPage<Props> = (props) => {
     return (
-        <></>
+        <div className="container mx-auto">
+            <NextSeo
+                title={`Archive - ${props.year} ${props.season}`}
+                description={`List of all animes on ${props.year} and when thes season is ${props.season}`}
+            />
+
+            <h3 className="container mx-auto capitalize text-3xl pt-10 pb-2">
+                {props.season} {props.year}
+            </h3>
+
+            <ArchiveList year={props.year}
+                        season={props.season}
+                        type="anime"/>
+        </div>
     )
 }
 
@@ -50,16 +63,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         }
     }
 
-    const res = await getAnimeByYearAndSeason(Number(year), season as Seasons);
-    if(!res.anime || res.anime.length === 0) {
-        return {
-            notFound: true,
-        }
-    }
-
     return {
         props: {
-            data: res.anime,
             year,
             season
         },

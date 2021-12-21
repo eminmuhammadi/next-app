@@ -64,7 +64,13 @@ const CharactersCSR = (props: CharactersCsrProps): JSX.Element => {
     const { data } = useSWR(`/manga/${props.id}/characters`, fetch);
     
     if (!data) {
-        return <></>
+        return(
+            <div>
+                <p className="text-center pt-5">
+                    Loading...
+                </p>
+            </div>
+        )
     }
 
     return <Characters data={data.characters} />

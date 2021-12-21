@@ -16,19 +16,25 @@ const GalleryCSR = (props: GalleryProps): JSX.Element => {
     const { data } = useSWR(`/${props.type}/${props.id}/pictures`, fetch);
 
     if (!data) {
-        return <></>
+        return(
+            <div>
+                <p className="text-center pt-5">
+                    Loading...
+                </p>
+            </div>
+        )
     }
 
     return (
         <SimpleReactLightbox>
             <SRLWrapper>
                 {
-                    data.pictures[0].large && (
+                    data.pictures[0]?.large && (
                         <div>
                             <h3 className="text-3xl py-6">Pictures</h3>
 
                             <div className="dark:bg-gray-900 rounded-lg flex overflow-x-scroll h-36 pt-3 pb-5 bg-gray-50">
-                                {data.pictures.map((picture: Picture, index: number) => {
+                                {data.pictures?.map((picture: Picture, index: number) => {
                                     return (
                                         <a href={`${urlUpdater(picture.large || '')}`}
                                             target='_blank'
@@ -52,12 +58,12 @@ const GalleryCSR = (props: GalleryProps): JSX.Element => {
                 }
 
                 {
-                    data.pictures[0].image_url && (
+                    data.pictures[0]?.image_url && (
                         <div>
                             <h3 className="text-3xl py-6">Pictures</h3>
 
                             <div className="dark:bg-gray-900 rounded-lg flex overflow-x-scroll h-36 pt-3 pb-5 bg-gray-50">
-                                {data.pictures.map((picture: Picture, index: number) => {
+                                {data.pictures?.map((picture: Picture, index: number) => {
                                     return (
                                         <a href={`${urlUpdater(picture.image_url || '')}`}
                                             target='_blank'

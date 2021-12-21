@@ -1,4 +1,5 @@
  import { GetServerSideProps, NextPage } from 'next'
+ import { NextSeo } from 'next-seo';
 
 import getTopData from "../../_data/top"
 import { Top } from "../../_data/_interfaces/top/Top";
@@ -19,12 +20,19 @@ interface Props {
 const Index: NextPage<Props> = (props) => {
     return (
         <div className="container mx-auto">
+            <NextSeo
+                title={`Anime`}
+                description={`Anime is hand-drawn and computer animation originating from Japan. In Japan and in Japanese, anime describes all animated works, regardless of style or origin. However, outside of Japan and in English, anime is colloquial for Japanese animation and refers specifically to animation produced in Japan. Listing anime page ${props.page}`}
+            />
+
             <h3 className="container mx-auto text-3xl pt-10 pb-2">
                 Anime
             </h3>
+
             <List data={props.data} 
                   type="anime"
                   page={props.page}/>
+
             <div className="grid justify-items-center text-base pb-8">
                 <div className="flex">
                     {

@@ -1,16 +1,26 @@
 import { NextPageContext } from "next";
+import { NextSeo } from "next-seo";
 
 interface ErrorComponentProps {
 	statusCode?: number;
 }
 
-const ErrorComponent = ({ statusCode }: ErrorComponentProps): JSX.Element  => {
+const ErrorComponent = ({ statusCode }: ErrorComponentProps): JSX.Element => {
 	return (
-		<p>
-			{statusCode
-				? `An error ${statusCode} occurred on server`
-				: "An error occurred on client"}
-		</p>
+		<div className="container mx-auto relative h-96">
+			<NextSeo
+				title={`Error ${statusCode}`}
+				noindex={true}
+				nofollow={true}
+				description={`Error ${statusCode}`}
+			/>
+
+			<div className="px-2 pt-5 text-center absolute inset-0 flex items-center justify-center py-4">
+				<h3 className="text-2xl block">
+					Error {statusCode}
+				</h3>
+			</div>
+		</div>
 	);
 }
 

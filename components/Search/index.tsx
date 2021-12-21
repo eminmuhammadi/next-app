@@ -9,12 +9,12 @@ const Search = (): JSX.Element => {
                  Search
                  <select name="type" 
                          className={`dark:bg-gray-900 ${style.select}`}>
-                    <option value="manga">Anime</option>
+                    <option value="anime">Anime</option>
                     <option value="manga">Manga</option>
                     <option value="character">Character</option>
                 </select>
             </h3>
-            <div className="py-4 container-mx-auto grid grid-cols-12">
+            <div className="py-4 container mx-auto grid grid-cols-12">
                 <div className="col-span-11 md:col-span-12">
                     <input type="search"
                        name="q"

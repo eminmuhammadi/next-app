@@ -1,10 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
-import { Hero } from '../../components/Hero';
+import { NextSeo } from 'next-seo';
 
 import { getCharacterById } from "../../_data/characters";
 import { Character } from "../../_data/_interfaces/character/ById";
+
 import { CharacterDetails } from "../../components/Character";
+import { Hero } from '../../components/Hero';
 
 interface Props {
     data: Character,
@@ -23,6 +25,10 @@ interface IParams extends ParsedUrlQuery {
 const Index: NextPage<Props> = (props) => {
     return (
         <div>
+            <NextSeo
+                title={`${props.data.name || props.data.name_kanji}`}
+                description={`${props.data.about}`}
+            />
             <Hero title={props.data.name || props.data.name_kanji} 
                   description={
                     (props.data.about).replace("[Written by MAL Rewrite]", "")

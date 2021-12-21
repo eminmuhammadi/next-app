@@ -2,7 +2,9 @@ import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <>Index</>
+    <div className="container mx-auto">
+        {/* TODO */}
+    </div>
   );
 };
 

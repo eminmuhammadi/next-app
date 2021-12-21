@@ -89,12 +89,18 @@ const EpisodesCSR = (props: EpisodeCsrProps): JSX.Element => {
     const { data } = useSWR(`/anime/${props.id}/videos`, fetch);
 
     if (!data) {
-        return <></>
+        return(
+            <div>
+                <p className="text-center pt-5">
+                    Loading...
+                </p>
+            </div>
+        )
     }
 
     return <Episodes data={data.episodes || []}
-        description={props.description || ''}
-        promo={data.promo || []} />
+                description={props.description || ''}
+                promo={data.promo || []} />
 }
 
 export {
