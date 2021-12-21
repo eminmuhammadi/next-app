@@ -61,7 +61,7 @@ interface CharactersCsrProps {
 
 const CharactersCSR = (props: CharactersCsrProps): JSX.Element => {
     const fetch = (url: string) => fetcher.get<Characters>(url);
-    const { data } = useSWR(`${process.env.API_URL}/manga/${props.id}/characters`, fetch);
+    const { data } = useSWR(`/manga/${props.id}/characters`, fetch);
     
     if (!data) {
         return(

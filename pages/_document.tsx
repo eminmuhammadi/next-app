@@ -24,7 +24,7 @@ class MyDocument extends Document {
 
           <style type="text/css" dangerouslySetInnerHTML={{ __html: customCSS }} />
 
-          <link rel="icon" href="favicon.ico"/>
+          <link rel="icon" href="/favicon.ico"/>
           <link rel="manifest" href="/manifest.json"/>
 
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
